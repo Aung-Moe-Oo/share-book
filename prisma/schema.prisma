@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  login_id   String   @id @db.VarChar(8)
+  name       String   @db.VarChar(45)
+  password   String   @db.VarChar(300)
+  token      String?  @db.VarChar(400)
+  created_at DateTime @default(now())
+
+  Post Post[]
+  User User[]
+}
+
+model User {
+  user_id       String     @id @default(uuid()) @db.VarChar(100)
+  user_name     String     @db.VarChar(45)
+  email         String     @unique @db.VarChar(100)
+  password      String     @db.VarChar(300)
+  bio           String?    @db.VarChar(400)
+  token         String?    @db.VarChar(400)
+  user_type     UserType   @default(normal)
+  status        UserStatus @default(no_verify)
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @default(now()) @updatedAt
+  updated_by    Admin?     @relation(fields: [updated_by_id], references: [login_id], onDelete: Cascade, onUpdate: Cascade)
+  updated_by_id String?
+
+  Category_created Category[] @relation("created_by")
+  Category_updated Category[] @relation("updated_by")
+  Post             Post[]
+  Report           Report[]
+}
+
+model Post {
+  post_id       String     @id @default(uuid()) @db.VarChar(45)
+  title         String     @db.VarChar(100)
+  content       String     @db.VarChar(600)
+  status        PostStatus
+  created_by    User       @relation(fields: [created_by_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+  created_by_id String
+  category      Category   @relation(fields: [category_id], references: [category_id], onDelete: Cascade, onUpdate: Cascade)
+  category_id   String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @default(now()) @updatedAt
+
+  updated_by        Admin?   @relation(fields: [updated_by_id], references: [login_id])
+  updated_by_id     String?  @db.VarChar(100)
+  reported_user_ids Report[]
+}
+
+model Category {
+  category_id   String   @id @default(uuid()) @db.VarChar(45)
+  name          String   @db.VarChar(45)
+  created_by    User     @relation("created_by", fields: [created_by_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+  created_by_id String
+  updated_by    User?    @relation("updated_by", fields: [updated_by_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+  updated_by_id String?
+  created_at    DateTime @default(now())
+  updated_at    DateTime @default(now()) @updatedAt
+  Post          Post[]
+}
+
+model Report {
+  report_id        String @id @default(uuid()) @db.VarChar(45)
+  reported_user_id User   @relation(fields: [reported_by_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+  reported_by_id   String
+  reported_post    Post   @relation(fields: [reported_post_id], references: [post_id], onDelete: Cascade, onUpdate: Cascade)
+  reported_post_id String
+}
+
+enum UserType {
+  normal
+  premium
+}
+
+enum UserStatus {
+  no_verify
+  verified
+  suspended
+}
+
+enum PostStatus {
+  draft
+  published
+  reported
+}

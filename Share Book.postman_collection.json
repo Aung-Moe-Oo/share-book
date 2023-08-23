@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "eb4e96ac-a710-4298-9349-8bc932dd1a9d",
+		"name": "Share Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26341901"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_name",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/register",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "user@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/login",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_name",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "hello world",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/edit/7b4799ed-3f43-4fb8-a079-45c855094b79",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"edit",
+								"7b4799ed-3f43-4fb8-a079-45c855094b79"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}admin/register",
+							"host": [
+								"{{URL}}admin"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}admin/login",
+							"host": [
+								"{{URL}}admin"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user by admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_type",
+									"value": "normal",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "suspended",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/update/7b4799ed-3f43-4fb8-a079-45c855094b79",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"update",
+								"7b4799ed-3f43-4fb8-a079-45c855094b79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_type",
+									"value": "normal",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "suspended",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}user/delete/7b4799ed-3f43-4fb8-a079-45c855094b79",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"delete",
+								"7b4799ed-3f43-4fb8-a079-45c855094b79"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all users by admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}user",
+							"host": [
+								"{{URL}}user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "create category by user only",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "book",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category/create",
+							"host": [
+								"{{URL}}category"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category",
+							"host": [
+								"{{URL}}category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category/e5e535d9-5656-493b-b381-005bc7f31aba",
+							"host": [
+								"{{URL}}category"
+							],
+							"path": [
+								"e5e535d9-5656-493b-b381-005bc7f31aba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category/update/289602a5-2b72-4c4d-8a77-b6ab0c4e04b7",
+							"host": [
+								"{{URL}}category"
+							],
+							"path": [
+								"update",
+								"289602a5-2b72-4c4d-8a77-b6ab0c4e04b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category/delete/289602a5-2b72-4c4d-8a77-b6ab0c4e04b7",
+							"host": [
+								"{{URL}}category"
+							],
+							"path": [
+								"delete",
+								"289602a5-2b72-4c4d-8a77-b6ab0c4e04b7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "create post by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"lorem Two\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\",\n    \"status\": \"draft\",\n    \"category_id\": \"1e231859-b373-4e8b-96de-b88a699c3ae2\",\n    \"reported_user_ids\": [\n        \"a64198c0-4e23-4730-bbd6-536f0699535d\",\n        \"7b4799ed-3f43-4fb8-a079-45c855094b79\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}post/create",
+							"host": [
+								"{{URL}}post"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}post",
+							"host": [
+								"{{URL}}post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get published posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}post/published",
+							"host": [
+								"{{URL}}post"
+							],
+							"path": [
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get post by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}post/55998fa1-3c7a-4018-b400-b3dcac610b8a",
+							"host": [
+								"{{URL}}post"
+							],
+							"path": [
+								"55998fa1-3c7a-4018-b400-b3dcac610b8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post by Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"lorem Two edited\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\",\n    \"status\": \"reported\",\n    \"category_id\": \"289602a5-2b72-4c4d-8a77-b6ab0c4e04b7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}post/update/409f9d04-b633-42e0-b833-8bfac8d4fd10",
+							"host": [
+								"{{URL}}post"
+							],
+							"path": [
+								"update",
+								"409f9d04-b633-42e0-b833-8bfac8d4fd10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post by User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"lorem edited\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\",\n    \"status\": \"draft\",\n    \"category_id\": \"289602a5-2b72-4c4d-8a77-b6ab0c4e04b7\",\n    \"reported_user_ids\": [\n        \"a64198c0-4e23-4730-bbd6-536f0699535d\",\n        \"7b4799ed-3f43-4fb8-a079-45c855094b79\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}post/edit/6d84d7c8-2335-4f2a-bb0c-805b8cd2f8f9",
+							"host": [
+								"{{URL}}post"
+							],
+							"path": [
+								"edit",
+								"6d84d7c8-2335-4f2a-bb0c-805b8cd2f8f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pencil2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}category/delete/e5e535d9-5656-493b-b381-005bc7f31aba",
+							"host": [
+								"{{URL}}category"
+							],
+							"path": [
+								"delete",
+								"e5e535d9-5656-493b-b381-005bc7f31aba"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
